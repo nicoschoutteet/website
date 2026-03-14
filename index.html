@@ -6,14 +6,16 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
   <body>
+    <h1>This is a simple bar chart example</h1>
+    <p>It was generated with Claude AI</p>
     <svg id="chart" width="500" height="300"></svg>
 
     <script>
       const data = [
-        { name: "A", value: 1 },
-        { name: "B", value: 5 },
-        { name: "C", value: 8 },
-        { name: "D", value: 10 },
+        { name: "Nico", value: 1 },
+        { name: "Florian", value: 5 },
+        { name: "Beatrijs", value: 8 },
+        { name: "Esmee", value: 10 },
       ];
 
       const width = 500;
@@ -55,7 +57,11 @@
       svg
         .append("g")
         .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y));
+        .call(
+          d3
+            .axisLeft(y)
+            .tickValues(d3.range(0, d3.max(data, (d) => d.value) + 1, 2)),
+        );
     </script>
   </body>
 </html>
